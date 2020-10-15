@@ -1,6 +1,12 @@
 .header {
     grid-area: header;
-    background: #62cdec99;
+    background: #292d31;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    padding: 0 calc((100% - 1200px)/2);
 }
 
 .logo {

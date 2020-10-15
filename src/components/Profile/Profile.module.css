@@ -1,15 +1,16 @@
 .profile {
     grid-area: content;
+
+    background: #F0F0F0;
+    /*border: 1px solid #292d31;*/
+    box-shadow: inset 0 0 1px 0 #414040, 0 0 1px 0 #414040;
+
+    padding: 10px;
 }
 
 .profile__cover {
     width: 100%;
     height: 130px;
-}
-
-.user__avatar {
-    width: 150px;
-    height: auto;
 }
 
 .posts__author-avatar {

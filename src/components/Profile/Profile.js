@@ -1,6 +1,8 @@
 import React from "react";
 import s from './Profile.module.css';
 
+import UserBoard from "../UserBoard/UserBoard";
+
 export default function Profile() {
     //TODO начать уходить от BEM нотации когда распилю этот компонент
     return (
@@ -10,21 +12,7 @@ export default function Profile() {
                  className={s.profile__cover}
             />
 
-            <section className={s.user}>
-                <img src="https://yt3.ggpht.com/a/AATXAJyAFVGj7st1D6jw10hT48NR8r_WhfVJqDNM0vPbeA=s900-c-k-c0xffffffff-no-rj-mo"
-                     alt="user avatar"
-                     className={s.user__avatar}
-                />
-                <h2 className={s.user__name}>Kirill B</h2>
-                <address>
-                    <ul>
-                        <li>Date of Birth:</li>
-                        <li>City:</li>
-                        <li>Education:</li>
-                        <li>Web Site: <a href="/#">some url</a></li>
-                    </ul>
-                </address>
-            </section>
+            <UserBoard />
 
             <section className={s.wall}>
                 <h3 className={s.wall__title}>My posts</h3>
