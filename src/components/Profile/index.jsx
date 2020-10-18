@@ -1,9 +1,9 @@
 import React from "react";
 import s from './Profile.module.css';
 
-import UserBoard from "../UserBoard/UserBoard";
+import UserBoard from "../UserBoard";
 
-export default function Profile() {
+export default function Index() {
     //TODO начать уходить от BEM нотации когда распилю этот компонент
     return (
         <main className={s.profile}>
