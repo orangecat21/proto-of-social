@@ -22,7 +22,7 @@ export default function Index() {
                     </tr>
                     <tr>
                         <th>Education:</th>
-                        <td>VA RVSN</td>
+                        <td>UNIVERSITY</td>
                     </tr>
                     <tr>
                         <th>Web Site:</th>
