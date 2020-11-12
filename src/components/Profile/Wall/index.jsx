@@ -10,9 +10,9 @@ const Wall = () => {
             <h3 className={s.wall__title}>My posts</h3>
             <NewPostForm/>
             <ul className={s.posts}>
-                <Post textContent="Hello everybody"/>
-                <Post textContent="Shut up, chicken"/>
-                <Post textContent="My name is..."/>
+                <Post message="Hello everybody"/>
+                <Post message="Shut up, chicken"/>
+                <Post message="My name is..."/>
             </ul>
         </section>
     );

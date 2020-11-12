@@ -8,7 +8,7 @@ const Post = (props) => {
                  alt="avatar"
                  className={s['author-avatar']}
             />
-            <p className={s.text}>{props.textContent}</p>
+            <p className={s.text}>{props.message}</p>
         </li>
     );
 }

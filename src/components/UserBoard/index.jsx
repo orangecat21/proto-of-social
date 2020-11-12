@@ -11,23 +11,25 @@ const UserBoard = () => {
             <h2 className={s.name}>Kirill Borovskikh</h2>
             <address className={s.about}>
                 <table>
-                    <caption className={s.visuallyHidden}>Personal information</caption>
-                    <tr>
-                        <th>Date of Birth:</th>
-                        <td>5 feb 1999</td>
-                    </tr>
-                    <tr>
-                        <th>City:</th>
-                        <td>Moscow</td>
-                    </tr>
-                    <tr>
-                        <th>Education:</th>
-                        <td>UNIVERSITY</td>
-                    </tr>
-                    <tr>
-                        <th>Web Site:</th>
-                        <td><a href="/#">Some url</a></td>
-                    </tr>
+                    <caption className="visually-hidden">Personal information</caption>
+                    <tbody>
+                        <tr>
+                            <th>Date of Birth:</th>
+                            <td>5 feb 1999</td>
+                        </tr>
+                        <tr>
+                            <th>City:</th>
+                            <td>Moscow</td>
+                        </tr>
+                        <tr>
+                            <th>Education:</th>
+                            <td>UNIVERSITY</td>
+                        </tr>
+                        <tr>
+                            <th>Web Site:</th>
+                            <td><a href="/#">Some url</a></td>
+                        </tr>
+                    </tbody>
                 </table>
             </address>
         </section>
