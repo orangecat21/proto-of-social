@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Aside.module.css";
 
-export default function Index() {
+const Aside = () => {
     return (
         <aside className={s.aside}>
             <nav>
@@ -16,3 +16,5 @@ export default function Index() {
         </aside>
     );
 }
+
+export default Aside;

@@ -2,7 +2,7 @@ import React from "react";
 
 import s from './Header.module.css';
 
-export default function Index() {
+const Header = () => {
     return (
         <header className={s.header}>
             <img src="https://cdn.pixabay.com/photo/2016/01/19/07/35/social-1148031_1280.png"
@@ -12,3 +12,5 @@ export default function Index() {
         </header>
     );
 }
+
+export default Header;

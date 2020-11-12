@@ -8,12 +8,7 @@
     padding: 10px;
 }
 
-.profile__cover {
+.cover {
     width: 100%;
     height: 130px;
-}
-
-.posts__author-avatar {
-    width: 30px;
-    height: auto;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./UserBoard.module.css";
 
-export default function Index() {
+const UserBoard = () => {
     return (
         <section className={s.user}>
             <img src="https://yt3.ggpht.com/a/AATXAJyAFVGj7st1D6jw10hT48NR8r_WhfVJqDNM0vPbeA=s900-c-k-c0xffffffff-no-rj-mo"
@@ -33,3 +33,5 @@ export default function Index() {
         </section>
     );
 }
+
+export default UserBoard;
