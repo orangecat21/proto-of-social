@@ -5,14 +5,28 @@ import Post from "./Post";
 import NewPostForm from "./NewPostForm";
 
 const Wall = () => {
+
+    const postData = [
+        {
+            message: "Hello everybody",
+            id: 1,
+        },
+        {
+            message: "Shut up, chicken",
+            id: 2,
+        },
+        {
+            message: "My name is...",
+            id:3,
+        },
+    ];
+
     return (
-        <section className={s.wall}>
-            <h3 className={s.wall__title}>My posts</h3>
+        <section className={s.wrapper}>
+            <h3 className={s.title}>My posts</h3>
             <NewPostForm/>
             <ul className={s.posts}>
-                <Post message="Hello everybody"/>
-                <Post message="Shut up, chicken"/>
-                <Post message="My name is..."/>
+                {postData.map(item => <Post key={item.id} message={item.message}/>)}
             </ul>
         </section>
     );
