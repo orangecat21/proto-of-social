@@ -8,13 +8,14 @@ import Profile from "./components/Profile";
 import Dialogs from "./components/Dialogs";
 
 const App = (props) => {
+    const {state} = props;
     return (
         <Router>
             <div className={s.wrapper}>
                 <Header/>
                 <Aside/>
                 <Switch>
-                    <Route path="/profile" render={() => <Profile postData={props.postData}/>}/>
+                    <Route path="/profile" render={() => <Profile state={state.profilePage}/>}/>
                     <Route path="/messages" component={Dialogs}/>
                     <Route path='*'>
                         <Redirect to='/profile'/>
