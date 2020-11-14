@@ -7,14 +7,14 @@ import Aside from "./components/Aside";
 import Profile from "./components/Profile";
 import Dialogs from "./components/Dialogs";
 
-const App = () => {
+const App = (props) => {
     return (
         <Router>
             <div className={s.wrapper}>
                 <Header/>
                 <Aside/>
                 <Switch>
-                    <Route path="/profile" component={Profile}/>
+                    <Route path="/profile" render={() => <Profile postData={props.postData}/>}/>
                     <Route path="/messages" component={Dialogs}/>
                     <Route path='*'>
                         <Redirect to='/profile'/>

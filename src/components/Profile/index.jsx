@@ -4,7 +4,7 @@ import s from './Profile.module.css';
 import UserBoard from "../UserBoard";
 import Wall from './Wall';
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <main className={s.profile}>
             <img src="https://im0-tub-ru.yandex.net/i?id=f039078f7e669e6669e7085fc56494bc&n=13&exp=1"
@@ -12,7 +12,7 @@ const Profile = () => {
                  className={s.cover}
             />
             <UserBoard />
-            <Wall/>
+            <Wall postData={props.postData}/>
         </main>
     );
 }
