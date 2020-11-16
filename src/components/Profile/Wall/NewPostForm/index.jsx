@@ -1,14 +1,14 @@
 import React from "react";
 import s from "./NewPostForm.module.css";
 
-const NewPostForm = () => {
-
+const NewPostForm = (props) => {
+    const {newPostHandler} = props;
     const postElem = React.createRef();
 
     const submitHandler = (event) => {
         event.preventDefault();
         let text = postElem.current.value;
-        alert(text);
+        newPostHandler(text);
     }
 
     return (
