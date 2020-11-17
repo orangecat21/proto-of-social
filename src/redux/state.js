@@ -1,3 +1,5 @@
+import {rerenderAllTree} from "../render";
+
 const postData = [
     {
         message: "Hello everybody",
@@ -18,7 +20,6 @@ export default class State {
         this.profilePage = {};
         //Имитация прихода первых данных с сервера при инициализации
         this.profilePage._postData = postData;
-        this.busyID = this.profilePage._postData.map(item => item.id);
     }
 
     get postData() {
@@ -30,13 +31,7 @@ export default class State {
     }
 
     setUniqId = () => {
-        let rndId = Math.floor(Math.random() * (1 - 10000 + 1)) + 10000;
-        if(this.busyID.every(item =>  item !== rndId)) {
-            this.busyID.push(rndId);
-            return rndId;
-        } else {
-            this.setUniqId();
-        }
+        return Date.now();
     }
 
     addNewPost = (message) => {
@@ -48,8 +43,7 @@ export default class State {
             let newPostData = this.postData;
             newPostData.push(postObj);
             this.postData = newPostData;
-
-            console.log(this.postData);
+            rerenderAllTree(this);
         }
     }
 }

@@ -9,6 +9,7 @@ const NewPostForm = (props) => {
         event.preventDefault();
         let text = postElem.current.value;
         newPostHandler(text);
+        postElem.current.value = '';
     }
 
     return (
