@@ -5,7 +5,7 @@ import UserBoard from "../UserBoard";
 import Wall from './Wall';
 
 const Profile = (props) => {
-    const {postData, newPostHandler} = props;
+    const {postData, newPostHandler, newPostText, changeNewPostText} = props;
     return (
         <main className={s.profile}>
             <img src="https://im0-tub-ru.yandex.net/i?id=f039078f7e669e6669e7085fc56494bc&n=13&exp=1"
@@ -13,7 +13,7 @@ const Profile = (props) => {
                  className={s.cover}
             />
             <UserBoard />
-            <Wall postData={postData} newPostHandler={newPostHandler}/>
+            <Wall postData={postData} newPostHandler={newPostHandler} newPostText={newPostText} changeNewPostText={changeNewPostText}/>
         </main>
     );
 }

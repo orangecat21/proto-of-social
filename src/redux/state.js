@@ -20,6 +20,7 @@ export default class State {
         this.profilePage = {};
         //Имитация прихода первых данных с сервера при инициализации
         this.profilePage._postData = postData;
+        this.profilePage._newPostText = '';
     }
 
     get postData() {
@@ -30,19 +31,29 @@ export default class State {
         this.profilePage._postData = newPostData;
     }
 
+    get newPostText() {
+        return this.profilePage._newPostText;
+    }
+
+    changeNewPostText = (text) => {
+        this.profilePage._newPostText = text;
+        rerenderAllTree(this);
+    }
+
     setUniqId = () => {
         return Date.now();
     }
 
-    addNewPost = (message) => {
-        if (message) {
+    addNewPost = () => {
+        if (this.newPostText) {
             let postObj = {
-                message,
+                message: this.newPostText,
                 id: this.setUniqId(),
             }
-            let newPostData = this.postData;
+            const newPostData = this.postData;
             newPostData.push(postObj);
             this.postData = newPostData;
+            this.changeNewPostText('');
             rerenderAllTree(this);
         }
     }

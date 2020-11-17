@@ -15,7 +15,11 @@ const App = (props) => {
                 <Header/>
                 <Aside/>
                 <Switch>
-                    <Route path="/profile" render={() => <Profile postData={state.postData} newPostHandler={state.addNewPost}/>}/>
+                    <Route path="/profile" render={() => <Profile postData={state.postData}
+                                                                  newPostHandler={state.addNewPost}
+                                                                  newPostText={state.newPostText}
+                                                                  changeNewPostText={state.changeNewPostText}/>}/>
+
                     <Route path="/messages" component={Dialogs}/>
                     <Route path='*'>
                         <Redirect to='/profile'/>

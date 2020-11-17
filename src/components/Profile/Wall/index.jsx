@@ -5,12 +5,12 @@ import Post from "./Post";
 import NewPostForm from "./NewPostForm";
 
 const Wall = (props) => {
-    const {postData, newPostHandler} = props;
+    const {postData, newPostHandler, newPostText, changeNewPostText} = props;
 
     return (
         <section className={s.wrapper}>
             <h3 className={s.title}>My posts</h3>
-            <NewPostForm newPostHandler={newPostHandler}/>
+            <NewPostForm newPostHandler={newPostHandler} newPostText={newPostText} changeNewPostText={changeNewPostText}/>
             <ul className={s.posts}>
                 {postData.map(item => <Post key={item.id} message={item.message}/>)}
             </ul>
