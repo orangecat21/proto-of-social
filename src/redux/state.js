@@ -1,5 +1,3 @@
-import {rerenderAllTree} from "../render";
-
 const postData = [
     {
         message: "Hello everybody",
@@ -21,6 +19,7 @@ export default class State {
         //Имитация прихода первых данных с сервера при инициализации
         this.profilePage._postData = postData;
         this.profilePage._newPostText = '';
+        this.rerenderAllTree = () => {};
     }
 
     get postData() {
@@ -37,11 +36,15 @@ export default class State {
 
     changeNewPostText = (text) => {
         this.profilePage._newPostText = text;
-        rerenderAllTree(this);
+        this.rerenderAllTree(this);
     }
 
     setUniqId = () => {
         return Date.now();
+    }
+
+    subscribe = (observer) => {
+        this.rerenderAllTree = observer;
     }
 
     addNewPost = () => {
@@ -54,7 +57,7 @@ export default class State {
             newPostData.push(postObj);
             this.postData = newPostData;
             this.changeNewPostText('');
-            rerenderAllTree(this);
+            this.rerenderAllTree(this);
         }
     }
 }
