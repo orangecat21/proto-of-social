@@ -4,20 +4,20 @@ import React from "react";
 import App from "./App";
 import './index.css';
 
-import State from "./redux/state";
+import Store from "./redux/state";
 
-const rerenderAllTree = (state) => {
+const rerenderAllTree = (store) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state}/>
+            <App state={store}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-const state = new State();
-rerenderAllTree(state);
-state.subscribe(rerenderAllTree);
+const store = new Store();
+rerenderAllTree(store);
+store.subscribe(rerenderAllTree);
 
 
 // If you want your app to work offline and load faster, you can change

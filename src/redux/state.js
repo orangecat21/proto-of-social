@@ -13,30 +13,31 @@ const postData = [
     },
 ];
 
-export default class State {
+export default class Store {
     constructor() {
-        this.profilePage = {};
+        this._state = {};
+        this._state.profilePage = {};
         //Имитация прихода первых данных с сервера при инициализации
-        this.profilePage._postData = postData;
-        this.profilePage._newPostText = '';
-        this.rerenderAllTree = () => {};
+        this._state.profilePage._postData = postData;
+        this._state.profilePage._newPostText = '';
+        this._subscriber = () => {};
     }
 
     get postData() {
-        return this.profilePage._postData;
+        return this._state.profilePage._postData;
     }
 
     set postData(newPostData) {
-        this.profilePage._postData = newPostData;
+        this._state.profilePage._postData = newPostData;
     }
 
     get newPostText() {
-        return this.profilePage._newPostText;
+        return this._state.profilePage._newPostText;
     }
 
     changeNewPostText = (text) => {
-        this.profilePage._newPostText = text;
-        this.rerenderAllTree(this);
+        this._state.profilePage._newPostText = text;
+        this._subscriber(this);
     }
 
     setUniqId = () => {
@@ -44,7 +45,7 @@ export default class State {
     }
 
     subscribe = (observer) => {
-        this.rerenderAllTree = observer;
+        this._subscriber = observer;
     }
 
     addNewPost = () => {
@@ -57,7 +58,7 @@ export default class State {
             newPostData.push(postObj);
             this.postData = newPostData;
             this.changeNewPostText('');
-            this.rerenderAllTree(this);
+            this._subscriber(this);
         }
     }
 }
