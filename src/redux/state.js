@@ -22,6 +22,7 @@ export default class Store {
         this._state.profilePage._newPostText = '';
         this._subscriber = () => {
         };
+
     }
 
     get postData() {
@@ -54,12 +55,34 @@ export default class Store {
                 const newPostData = this.postData;
                 newPostData.push(postObj);
                 this.postData = newPostData;
-                this.dispatch({type: "UPDATE-NEW-POST-TEXT", payload: {newText: ''}});
+                this.dispatch({
+                    type: "UPDATE-NEW-POST-TEXT",
+                    newText: '',
+                });
                 this._subscriber(this);
             }
         } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-            this._state.profilePage._newPostText = action.payload.newText;
+            this._state.profilePage._newPostText = action.newText;
             this._subscriber(this);
         }
     }
+
+    static addPostActionCreator = () => ({
+        type: this.actionTypes.ADD_POST,
+    });
+
+    static updateNewPostTextActionCreator = (text) => ({
+        type: this.actionTypes.UPDATE_NEW_POST_TEXT,
+        newText: text,
+    })
+
 }
+
+Store.actionTypes = {
+    ADD_POST: "ADD-POST",
+    UPDATE_NEW_POST_TEXT : "UPDATE-NEW-POST-TEXT",
+};
+
+export const addPostActionCreator = Store.addPostActionCreator;
+export const updateNewPostTextActionCreator = Store.updateNewPostTextActionCreator;
+

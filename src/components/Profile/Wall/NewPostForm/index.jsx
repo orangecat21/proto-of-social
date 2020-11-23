@@ -1,24 +1,19 @@
 import React from "react";
 import s from "./NewPostForm.module.css";
 
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/state";
+
 const NewPostForm = (props) => {
     const {newPostText, dispatch} = props;
 
     const submitHandler = (event) => {
         event.preventDefault();
-        const action = {
-            type: "ADD-POST",
-        };
+        const action = addPostActionCreator();
         dispatch(action);
     }
 
     const changeHandler = (event) => {
-        const action = {
-            type: "UPDATE-NEW-POST-TEXT",
-            payload: {
-                newText: event.target.value,
-            },
-        }
+        const action = updateNewPostTextActionCreator(event.target.value);
         dispatch(action);
     }
 
