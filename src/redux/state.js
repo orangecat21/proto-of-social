@@ -20,7 +20,8 @@ export default class Store {
         //Имитация прихода первых данных с сервера при инициализации
         this._state.profilePage._postData = postData;
         this._state.profilePage._newPostText = '';
-        this._subscriber = () => {};
+        this._subscriber = () => {
+        };
     }
 
     get postData() {
@@ -35,11 +36,6 @@ export default class Store {
         return this._state.profilePage._newPostText;
     }
 
-    changeNewPostText = (text) => {
-        this._state.profilePage._newPostText = text;
-        this._subscriber(this);
-    }
-
     setUniqId = () => {
         return Date.now();
     }
@@ -48,16 +44,21 @@ export default class Store {
         this._subscriber = observer;
     }
 
-    addNewPost = () => {
-        if (this.newPostText) {
-            let postObj = {
-                message: this.newPostText,
-                id: this.setUniqId(),
+    dispatch = (action) => {
+        if (action.type === "ADD-POST") {
+            if (this.newPostText) {
+                let postObj = {
+                    message: this.newPostText,
+                    id: this.setUniqId(),
+                }
+                const newPostData = this.postData;
+                newPostData.push(postObj);
+                this.postData = newPostData;
+                this.dispatch({type: "UPDATE-NEW-POST-TEXT", payload: {newText: ''}});
+                this._subscriber(this);
             }
-            const newPostData = this.postData;
-            newPostData.push(postObj);
-            this.postData = newPostData;
-            this.changeNewPostText('');
+        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profilePage._newPostText = action.payload.newText;
             this._subscriber(this);
         }
     }

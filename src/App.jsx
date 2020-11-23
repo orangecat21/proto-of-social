@@ -16,9 +16,8 @@ const App = (props) => {
                 <Aside/>
                 <Switch>
                     <Route path="/profile" render={() => <Profile postData={state.postData}
-                                                                  newPostHandler={state.addNewPost}
                                                                   newPostText={state.newPostText}
-                                                                  changeNewPostText={state.changeNewPostText}/>}/>
+                                                                  dispatch={state.dispatch}/>}/>
 
                     <Route path="/messages" component={Dialogs}/>
                     <Route path='*'>

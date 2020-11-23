@@ -2,15 +2,24 @@ import React from "react";
 import s from "./NewPostForm.module.css";
 
 const NewPostForm = (props) => {
-    const {newPostHandler, newPostText, changeNewPostText} = props;
+    const {newPostText, dispatch} = props;
 
     const submitHandler = (event) => {
         event.preventDefault();
-        newPostHandler();
+        const action = {
+            type: "ADD-POST",
+        };
+        dispatch(action);
     }
 
     const changeHandler = (event) => {
-        changeNewPostText(event.target.value);
+        const action = {
+            type: "UPDATE-NEW-POST-TEXT",
+            payload: {
+                newText: event.target.value,
+            },
+        }
+        dispatch(action);
     }
 
     return (
