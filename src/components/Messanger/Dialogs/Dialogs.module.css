@@ -1,0 +1,11 @@
+.wrapper {
+    width: 30%;
+    min-width: 200px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 0;
+}

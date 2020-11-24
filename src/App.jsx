@@ -5,10 +5,11 @@ import s from './App.module.css';
 import Header from "./components/Header";
 import Aside from "./components/Aside";
 import Profile from "./components/Profile";
-import Dialogs from "./components/Dialogs";
+import Messanger from "./components/Messanger";
 
 const App = (props) => {
     const {state} = props;
+
     return (
         <Router>
             <div className={s.wrapper}>
@@ -19,7 +20,8 @@ const App = (props) => {
                                                                   newPostText={state.newPostText}
                                                                   dispatch={state.dispatch}/>}/>
 
-                    <Route path="/messages" component={Dialogs}/>
+                    <Route path="/messages" render={() => <Messanger state={state.state.dialogPage}
+                                                                     dispatch={state.dispatch}/>}/>
                     <Route path='*'>
                         <Redirect to='/profile'/>
                     </Route>
