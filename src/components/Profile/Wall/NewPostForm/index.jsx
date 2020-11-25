@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./NewPostForm.module.css";
 
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/profileReducer";
 
 const NewPostForm = (props) => {
     const {newPostText, dispatch} = props;

@@ -1,6 +1,5 @@
 import profileReducer from "./profileReducer";
 import dialogReducer from "./dialogsReducer";
-import actionTypes from "./actionTypes";
 
 const postData = [
     {
@@ -17,13 +16,13 @@ const postData = [
     },
 ];
 const dialogsData = [
-    {id:1, name: 'Lelya'},
-    {id:2, name: 'Varia'},
+    {id: 1, name: 'Lelya'},
+    {id: 2, name: 'Varia'},
 ];
 const messagesData = [
-    {id:1, message: "Hi"},
-    {id:2, message: "How are you?"},
-    {id:3, message: "I`m fine, thank you"},
+    {id: 1, message: "Hi"},
+    {id: 2, message: "How are you?"},
+    {id: 3, message: "I`m fine, thank you"},
 ];
 
 export default class Store {
@@ -70,28 +69,4 @@ export default class Store {
 
         this._subscriber(this);
     }
-
-    static addPostActionCreator = () => ({
-        type: actionTypes.ADD_POST,
-    });
-
-    static updateNewPostTextActionCreator = (text) => ({
-        type: actionTypes.UPDATE_NEW_POST_TEXT,
-        newText: text,
-    });
-
-    static sendMessageActionCreator = () => ({
-        type: actionTypes.SEND_MESSAGE,
-    });
-
-    static updateNewMessageTextActionCreator = (text) => ({
-        type: actionTypes.UPDATE_NEW_MESSAGE_TEXT,
-        newText: text,
-    });
-
 }
-
-export const addPostActionCreator = Store.addPostActionCreator;
-export const updateNewPostTextActionCreator = Store.updateNewPostTextActionCreator;
-export const sendMessageActionCreator = Store.sendMessageActionCreator;
-export const updateNewMessageTextActionCreator = Store.updateNewMessageTextActionCreator;
