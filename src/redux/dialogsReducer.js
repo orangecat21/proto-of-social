@@ -1,6 +1,19 @@
 import actionTypes from "./actionTypes";
 
-const dialogReducer = (state, action) => {
+const initialState = {
+    dialogs: [
+        {id: 1, name: 'Lelya'},
+        {id: 2, name: 'Varia'},
+    ],
+    messages: [
+        {id: 1, message: "Hi"},
+        {id: 2, message: "How are you?"},
+        {id: 3, message: "I`m fine, thank you"},
+    ],
+    newMessageText: ''
+}
+
+const dialogReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.UPDATE_NEW_MESSAGE_TEXT:
             state.newMessageText = action.newText;
@@ -17,7 +30,8 @@ const dialogReducer = (state, action) => {
             }
             return state;
 
-        default: return state;
+        default:
+            return state;
     }
 }
 

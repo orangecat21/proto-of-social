@@ -1,20 +1,38 @@
 import actionTypes from "./actionTypes";
 
-const profileReducer = (state, action) => {
+const initialState = {
+    postData: [
+        {
+            message: "Hello everybody",
+            id: 1,
+        },
+        {
+            message: "Shut up, chicken",
+            id: 2,
+        },
+        {
+            message: "My name is...",
+            id: 3,
+        },
+    ],
+    newPostText: '',
+};
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_POST:
-            if (state._newPostText) {
+            if (state.newPostText) {
                 let postObj = {
-                    message: state._newPostText,
+                    message: state.newPostText,
                     id: Date.now(),
                 };
-                state._postData.push(postObj);
-                state._newPostText = "";
+                state.postData.push(postObj);
+                state.newPostText = "";
             }
             return state;
 
         case actionTypes.UPDATE_NEW_POST_TEXT:
-            state._newPostText = action.newText;
+            state.newPostText = action.newText;
             return state;
 
         default:

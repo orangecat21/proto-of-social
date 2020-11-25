@@ -25,7 +25,7 @@ const messagesData = [
     {id: 3, message: "I`m fine, thank you"},
 ];
 
-export default class Store {
+export default class CustomStore {
     constructor() {
         this._state = {
             profilePage: {

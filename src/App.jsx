@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 import Messanger from "./components/Messanger";
 
 const App = (props) => {
-    const {state} = props;
+    const {state, dispatch} = props;
 
     return (
         <Router>
@@ -17,12 +17,11 @@ const App = (props) => {
                 <Header/>
                 <Aside/>
                 <Switch>
-                    <Route path="/profile" render={() => <Profile postData={state.postData}
-                                                                  newPostText={state.newPostText}
-                                                                  dispatch={state.dispatch}/>}/>
+                    <Route path="/profile" render={() => <Profile state={state.profilePage}
+                                                                  dispatch={dispatch}/>}/>
 
-                    <Route path="/messages" render={() => <Messanger state={state.state.dialogPage}
-                                                                     dispatch={state.dispatch}/>}/>
+                    <Route path="/messages" render={() => <Messanger state={state.dialogPage}
+                                                                     dispatch={dispatch}/>}/>
                     <Route path='*'>
                         <Redirect to='/profile'/>
                     </Route>
