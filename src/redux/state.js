@@ -1,3 +1,7 @@
+import profileReducer from "./profileReducer";
+import dialogReducer from "./dialogsReducer";
+import actionTypes from "./actionTypes";
+
 const postData = [
     {
         message: "Hello everybody",
@@ -52,16 +56,8 @@ export default class Store {
         return this._state.profilePage._postData;
     }
 
-    set postData(newPostData) {
-        this._state.profilePage._postData = newPostData;
-    }
-
     get newPostText() {
         return this._state.profilePage._newPostText;
-    }
-
-    setUniqId = () => {
-        return Date.now();
     }
 
     subscribe = (observer) => {
@@ -69,72 +65,31 @@ export default class Store {
     }
 
     dispatch = (action) => {
-        if (action.type === Store.actionTypes.ADD_POST) {
-            if (this.newPostText) {
-                let postObj = {
-                    message: this.newPostText,
-                    id: this.setUniqId(),
-                };
-                const newPostData = this.postData;
-                newPostData.push(postObj);
-                this.postData = newPostData;
-                this.dispatch({
-                    type: Store.actionTypes.UPDATE_NEW_POST_TEXT,
-                    newText: '',
-                });
-                this._subscriber(this);
-            }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
 
-        } else if (action.type === Store.actionTypes.UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage._newPostText = action.newText;
-            this._subscriber(this);
-
-        } else if (action.type === Store.actionTypes.UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogPage.newMessageText = action.newText;
-            this._subscriber(this);
-
-        } else if (action.type === Store.actionTypes.SEND_MESSAGE) {
-            if (this._state.dialogPage.newMessageText) {
-                let newMessage = {
-                    id: this.setUniqId(),
-                    message: this._state.dialogPage.newMessageText,
-                };
-                this._state.dialogPage.messages.push(newMessage);
-                this.dispatch({
-                    type: Store.actionTypes.UPDATE_NEW_MESSAGE_TEXT,
-                    newText: '',
-                });
-                this._subscriber(this);
-            }
-        }
+        this._subscriber(this);
     }
 
     static addPostActionCreator = () => ({
-        type: this.actionTypes.ADD_POST,
+        type: actionTypes.ADD_POST,
     });
 
     static updateNewPostTextActionCreator = (text) => ({
-        type: this.actionTypes.UPDATE_NEW_POST_TEXT,
+        type: actionTypes.UPDATE_NEW_POST_TEXT,
         newText: text,
     });
 
     static sendMessageActionCreator = () => ({
-        type: this.actionTypes.SEND_MESSAGE,
+        type: actionTypes.SEND_MESSAGE,
     });
 
     static updateNewMessageTextActionCreator = (text) => ({
-        type: this.actionTypes.UPDATE_NEW_MESSAGE_TEXT,
+        type: actionTypes.UPDATE_NEW_MESSAGE_TEXT,
         newText: text,
     });
 
 }
-
-Store.actionTypes = {
-    ADD_POST: "ADD-POST",
-    UPDATE_NEW_POST_TEXT : "UPDATE-NEW-POST-TEXT",
-    SEND_MESSAGE: "SEND-MESSAGE",
-    UPDATE_NEW_MESSAGE_TEXT: "UPDATE-NEW-MESSAGE-TEXT",
-};
 
 export const addPostActionCreator = Store.addPostActionCreator;
 export const updateNewPostTextActionCreator = Store.updateNewPostTextActionCreator;
