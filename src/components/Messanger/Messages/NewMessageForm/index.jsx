@@ -17,6 +17,13 @@ const NewMessageFrom = (props) => {
         dispatch(action);
     }
 
+    const keyDownFormHandler = (event) => {
+        if(event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            submitHandler(event);
+        }
+    }
+
     return (
         <form action="#" className={s.wrapper} onSubmit={submitHandler}>
             <textarea name="messageText"
@@ -24,6 +31,7 @@ const NewMessageFrom = (props) => {
                       className={s.newMessage}
                       value={newMessageText}
                       onChange={changeHandler}
+                      onKeyDown={keyDownFormHandler}
             />
             <input type="submit"
                    value="Send"
