@@ -1,21 +1,24 @@
 import actionTypes from "./actionTypes";
 
 const dialogReducer = (state, action) => {
-    if (action.type === actionTypes.UPDATE_NEW_MESSAGE_TEXT) {
-        state.newMessageText = action.newText;
+    switch (action.type) {
+        case actionTypes.UPDATE_NEW_MESSAGE_TEXT:
+            state.newMessageText = action.newText;
+            return state;
 
-    } else if (action.type === actionTypes.SEND_MESSAGE) {
-        if (state.newMessageText) {
-            let newMessage = {
-                id: Date.now(),
-                message: state.newMessageText,
-            };
-            state.messages.push(newMessage);
-            state.newMessageText = '';
-        }
+        case actionTypes.SEND_MESSAGE:
+            if (state.newMessageText) {
+                let newMessage = {
+                    id: Date.now(),
+                    message: state.newMessageText,
+                };
+                state.messages.push(newMessage);
+                state.newMessageText = '';
+            }
+            return state;
+
+        default: return state;
     }
-
-    return state;
 }
 
 export default dialogReducer;
