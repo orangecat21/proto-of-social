@@ -1,5 +1,5 @@
-import profileReducer from "./profileReducer";
-import dialogReducer from "./dialogsReducer";
+import profileReducer from "./reducers/profileReducer";
+import dialogReducer from "./reducers/dialogsReducer";
 
 const postData = [
     {
@@ -25,7 +25,7 @@ const messagesData = [
     {id: 3, message: "I`m fine, thank you"},
 ];
 
-export default class CustomStore {
+export default class Storecustom {
     constructor() {
         this._state = {
             profilePage: {

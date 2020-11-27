@@ -1,20 +1,15 @@
 import React from "react";
 import s from './NewMessageForm.module.css';
 
-import {updateNewMessageTextActionCreator, sendMessageActionCreator} from '../../../../redux/dialogsReducer';
-
-const NewMessageFrom = (props) => {
-    const {dispatch, newMessageText} = props;
+const NewMessageFrom = ({newMessageText, onSendMessage, onChangeMessageText}) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        const action = sendMessageActionCreator();
-        dispatch(action);
+        onSendMessage();
     };
 
     const changeHandler = (event) => {
-        const action = updateNewMessageTextActionCreator(event.target.value);
-        dispatch(action);
+        onChangeMessageText(event.target.value);
     }
 
     const keyDownFormHandler = (event) => {

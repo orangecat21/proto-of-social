@@ -1,15 +1,14 @@
 import React from "react";
 import s from "./Messages.module.css";
-import MessagesList from "./MessagesList";
-import NewMessageFrom from "./NewMessageForm";
+import MessagesListContainer from "./MessagesList/MessagesListContainer";
+import NewMessageFormContainer from "./NewMessageForm/NewMessageFormContainer";
 
-const Messages = (props) => {
-    const {messages, newMessageText, dispatch} = props;
+const Messages = () => {
     return (
         <section className={s.wrapper}>
-            <MessagesList messages={messages}/>
+            <MessagesListContainer/>
 
-            <NewMessageFrom newMessageText={newMessageText} dispatch={dispatch}/>
+            <NewMessageFormContainer/>
         </section>
     );
 }

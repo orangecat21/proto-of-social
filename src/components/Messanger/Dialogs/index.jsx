@@ -3,9 +3,7 @@ import s from "./Dialogs.module.css";
 
 import Dialog from "./Dialog";
 
-const Dialogs = (props) => {
-    const {dialogList} = props;
-
+const Dialogs = ({dialogList}) => {
     return (
         <section className={s.wrapper}>
             <ul className={s.list}>

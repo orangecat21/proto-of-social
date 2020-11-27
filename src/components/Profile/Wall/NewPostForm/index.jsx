@@ -1,20 +1,14 @@
 import React from "react";
 import s from "./NewPostForm.module.css";
 
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/profileReducer";
-
-const NewPostForm = (props) => {
-    const {newPostText, dispatch} = props;
-
+const NewPostForm = ({defaultPostText, onAddPost, onPostChanged}) => {
     const submitHandler = (event) => {
         event.preventDefault();
-        const action = addPostActionCreator();
-        dispatch(action);
+        onAddPost();
     }
 
     const changeHandler = (event) => {
-        const action = updateNewPostTextActionCreator(event.target.value);
-        dispatch(action);
+        onPostChanged(event.target.value);
     }
 
     return (
@@ -22,7 +16,7 @@ const NewPostForm = (props) => {
             <textarea name="postText"
                       placeholder="Your`s post..."
                       className={s['post-text']}
-                      value={newPostText}
+                      value={defaultPostText}
                       onChange={changeHandler}
             />
             <input type="submit"

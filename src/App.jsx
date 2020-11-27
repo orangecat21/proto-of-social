@@ -8,20 +8,16 @@ import Aside from "./components/Aside";
 import Profile from "./components/Profile";
 import Messanger from "./components/Messanger";
 
-const App = (props) => {
-    const {state, dispatch} = props;
-
+const App = () => {
     return (
         <Router>
             <div className={s.wrapper}>
                 <Header/>
                 <Aside/>
                 <Switch>
-                    <Route path="/profile" render={() => <Profile state={state.profilePage}
-                                                                  dispatch={dispatch}/>}/>
+                    <Route path="/profile" render={() => <Profile/>}/>
 
-                    <Route path="/messages" render={() => <Messanger state={state.dialogPage}
-                                                                     dispatch={dispatch}/>}/>
+                    <Route path="/messages" render={() => <Messanger/>}/>
                     <Route path='*'>
                         <Redirect to='/profile'/>
                     </Route>

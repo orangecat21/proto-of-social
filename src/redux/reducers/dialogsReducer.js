@@ -1,4 +1,4 @@
-import actionTypes from "./actionTypes";
+import actionTypes from "../actionTypes";
 
 const initialState = {
     dialogs: [
@@ -16,8 +16,10 @@ const initialState = {
 const dialogReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newText;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.newText,
+            };
 
         case actionTypes.SEND_MESSAGE:
             if (state.newMessageText) {
@@ -25,8 +27,11 @@ const dialogReducer = (state = initialState, action) => {
                     id: Date.now(),
                     message: state.newMessageText,
                 };
-                state.messages.push(newMessage);
-                state.newMessageText = '';
+                return {
+                    ...state,
+                    messages: [...state.messages, newMessage],
+                    newMessageText: "",
+                };
             }
             return state;
 
