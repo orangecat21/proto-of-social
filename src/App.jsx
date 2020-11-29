@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Aside from "./components/Aside";
 import Profile from "./components/Profile";
 import Messanger from "./components/Messanger";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/profile" render={() => <Profile/>}/>
 
                     <Route path="/messages" render={() => <Messanger/>}/>
+                    <Route path="/users" render={() => <UsersContainer/>}/>
                     <Route path='*'>
                         <Redirect to='/profile'/>
                     </Route>

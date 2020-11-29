@@ -13,6 +13,9 @@ const Aside = () => {
                     <li><Link to="/news">News</Link></li>
                     <li><Link to="/music">Music</Link></li>
                     <li><Link to="/settings">Settings</Link></li>
+                    <br/>
+                    <br/>
+                    <li><Link to="/users">All users</Link></li>
                 </ul>
             </nav>
         </aside>

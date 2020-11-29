@@ -1,0 +1,58 @@
+.wrapper {
+    display: grid;
+    grid-template-rows: 1fr .5fr;
+    grid-template-columns: 80px 1fr;
+    grid-gap: 10px;
+
+    grid-template-areas:
+            "avatar info"
+            "button info";
+    align-items: center;
+    justify-items: center;
+
+    margin-bottom: 20px;
+}
+
+.userAvatar {
+    grid-area: avatar;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.followButton {
+    grid-area: button;
+    display: block;
+    width: 100%;
+}
+
+.info {
+    grid-area: info;
+    justify-self: stretch;
+
+    border: 1px grey solid;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 20px;
+    align-items: center;
+
+    height: 100%;
+    padding: 10px;
+}
+
+.name {
+
+}
+
+.status {
+    color: #5a5959;
+}
+
+.location {
+    grid-row: 1/3;
+    grid-column: 2/3;
+    text-align: right;
+}
