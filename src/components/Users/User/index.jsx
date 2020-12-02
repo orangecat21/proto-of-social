@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./User.module.css";
+import userPhoto from '../../../assets/img/user.jpg';
 
 
 const User = ({userData, onSwitchFollow}) => {
@@ -10,7 +11,7 @@ const User = ({userData, onSwitchFollow}) => {
 
     return (
         <li className={s.wrapper}>
-            <img src={userData.photo || "https://sovet-doctora73.ru/images/doctors/unnamed.jpg"}
+            <img src={userData.photos.small || userPhoto}
                  alt="User avatar"
                  className={s.userAvatar}
             />
@@ -24,15 +25,15 @@ const User = ({userData, onSwitchFollow}) => {
 
             <section className={s.info}>
                 <span className={s.name}>
-                    {userData.userName}
+                    {userData.name}
                 </span>
 
                 <span className={s.status}>
-                    {userData.status}
+                    {userData.status || `I don't have any status`}
                 </span>
 
                 <span className={s.location}>
-                    {userData.location.city},<br/>{userData.location.country}
+                    {userData.location?.city || `City`},<br/>{userData.location?.country || `Country`}
                 </span>
             </section>
         </li>
