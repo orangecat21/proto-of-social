@@ -1,6 +1,6 @@
 import Users from "./index";
 import {connect} from "react-redux";
-import {setUsersAC, switchFollowAC} from "../../redux/reducers/usersReducer";
+import {removeUsersAC, setUsersAC, switchFollowAC} from "../../redux/reducers/usersReducer";
 
 const mapStateToProps = (state) => {
     return {
@@ -13,9 +13,12 @@ const mapDispatchToProps = (dispatch) => {
         onSwitchFollow(currentId) {
             dispatch(switchFollowAC(currentId));
         },
-        setUsers: (users) => {
+        setUsers(users) {
             dispatch(setUsersAC(users));
         },
+        removeUsers() {
+            dispatch(removeUsersAC());
+        }
     };
 };
 

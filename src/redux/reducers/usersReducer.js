@@ -24,6 +24,12 @@ const userReducer = (state = initialState, action) => {
                 }),
             };
 
+        case actionTypes.REMOVE_USERS :
+            return {
+                ...state,
+                users: [],
+            }
+
         default:
             return state;
     }
@@ -43,4 +49,10 @@ export const setUsersAC = (users) => {
         type: actionTypes.SET_USERS,
         users,
     };
+};
+
+export const removeUsersAC = () => {
+    return {
+        type: actionTypes.REMOVE_USERS,
+    }
 };

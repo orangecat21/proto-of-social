@@ -5,6 +5,7 @@ const actionTypes = {
     UPDATE_NEW_MESSAGE_TEXT: "UPDATE-NEW-MESSAGE-TEXT",
     SWITCH_FOLLOW: "SWITCH-FOLLOW",
     SET_USERS: "SET-USERS",
+    REMOVE_USERS: "REMOVE-USERS",
 };
 
 export default actionTypes;
