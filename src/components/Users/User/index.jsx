@@ -18,9 +18,8 @@ const User = ({userData, onSwitchFollow}) => {
 
             <button className={s.followButton}
                     onClick={clickHandler}
-
             >
-                {userData.followed? "Unfollow": "Follow"}
+                {userData.followed ? "Unfollow" : "Follow"}
             </button>
 
             <section className={s.info}>
