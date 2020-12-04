@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import s from "./Users.module.css";
 import User from "./User";
-import * as axios from "axios";
+import axios from "axios";
 
 
 const Users = ({usersList, onSwitchFollow, setUsers}) => {
