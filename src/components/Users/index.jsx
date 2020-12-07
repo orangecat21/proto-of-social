@@ -8,10 +8,10 @@ import axios from "axios";
 const Users = ({usersList, onSwitchFollow, setUsers, removeUsers}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [maxPage, setMaxPage] = useState(0);
-    const [countOfUsers] = useState(10);
+    const [countOfUsers] = useState(9);
 
     useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}&page=1`)
             .then(res => {
                 setUsers(res.data.items);
                 let newMaxPage = Math.ceil(res.data.totalCount / countOfUsers);
@@ -36,8 +36,9 @@ const Users = ({usersList, onSwitchFollow, setUsers, removeUsers}) => {
 
     const scrollHandler = (event) => {
         let scrollPosition = event.target.scrollTop;
-        let scrollMax = event.target.scrollTopMax;
-        if (scrollPosition >= scrollMax) {
+        let scrollMax = event.target.scrollHeight;
+        let height = event.target.offsetHeight;
+        if (scrollPosition >= scrollMax-height) {
             loadNewPortion();
         }
     };
@@ -53,7 +54,9 @@ const Users = ({usersList, onSwitchFollow, setUsers, removeUsers}) => {
     } else {
         return (
             <main className={s.wrapper}>
-                <ul className={s.list} onScrollCapture={scrollHandler}>
+                <ul className={s.list} onScroll={(event) => {
+                    !isLoading && scrollHandler(event);
+                }}>
                     {usersList.map(user => <User key={user.id} userData={user} onSwitchFollow={onSwitchFollow}/>)}
                     {isLoading && <Loader style={{width: 80, height: 50}}/>}
                 </ul>
