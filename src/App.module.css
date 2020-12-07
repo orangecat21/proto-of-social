@@ -2,10 +2,11 @@
     background: #fff;
 
     max-width: 1200px;
+    height: 95vh;
     margin: 0 auto;
     
     display: grid;
-    grid-template-rows: 70px 1fr;
+    grid-template-rows: 70px minmax(0, auto);
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
 

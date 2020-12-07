@@ -8,30 +8,37 @@ import axios from "axios";
 const Users = ({usersList, onSwitchFollow, setUsers, removeUsers}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [maxPage, setMaxPage] = useState(0);
-    const [isDisabled, setIsDisabled] = useState(false);
+    const [countOfUsers] = useState(10);
 
     useEffect(() => {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users?count=5')
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}`)
             .then(res => {
                 setUsers(res.data.items);
-                let newMaxPage = Math.ceil(res.data.totalCount / 5);
+                let newMaxPage = Math.ceil(res.data.totalCount / countOfUsers);
                 setMaxPage(newMaxPage);
             });
         return () => {
             removeUsers();
         };
-    }, [setUsers, removeUsers]);
+    }, [setUsers, removeUsers, countOfUsers]);
 
-    const clickHandler = () => {
-        let pageNumber = usersList.length / 5 + 1;
+    const loadNewPortion = () => {
+        let pageNumber = usersList.length / countOfUsers + 1;
         if (pageNumber <= maxPage) {
             setIsLoading(true);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=5&page=${pageNumber}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}&page=${pageNumber}`)
                 .then(res => {
                     setUsers(res.data.items);
                     setIsLoading(false);
-                    pageNumber === maxPage && setIsDisabled(true);
                 });
+        }
+    };
+
+    const scrollHandler = (event) => {
+        let scrollPosition = event.target.scrollTop;
+        let scrollMax = event.target.scrollTopMax;
+        if (scrollPosition >= scrollMax) {
+            loadNewPortion();
         }
     };
 
@@ -46,12 +53,10 @@ const Users = ({usersList, onSwitchFollow, setUsers, removeUsers}) => {
     } else {
         return (
             <main className={s.wrapper}>
-                <ul className={s.list}>
+                <ul className={s.list} onScrollCapture={scrollHandler}>
                     {usersList.map(user => <User key={user.id} userData={user} onSwitchFollow={onSwitchFollow}/>)}
+                    {isLoading && <Loader style={{width: 80, height: 50}}/>}
                 </ul>
-                <button className={s.button} onClick={clickHandler} disabled={isDisabled}>
-                    Load new users {isLoading && <Loader style={{width: 30, height: 30}}/>}
-                </button>
             </main>
         );
     }

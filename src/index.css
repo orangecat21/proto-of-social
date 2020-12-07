@@ -4,11 +4,16 @@
   list-style-type: none;
 }
 
+html {
+  max-height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: "Helvetica", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-height: 100vh;
 }
 
 .visually-hidden {
