@@ -8,18 +8,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSwitchFollow(currentId) {
-            dispatch(switchFollowAC(currentId));
-        },
-        setUsers(users) {
-            dispatch(setUsersAC(users));
-        },
-        removeUsers() {
-            dispatch(removeUsersAC());
-        }
-    };
+const mapDispatchToProps = {
+    onSwitchFollow: switchFollowAC,
+    setUsers: setUsersAC,
+    removeUsers: removeUsersAC,
 };
 
 const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);

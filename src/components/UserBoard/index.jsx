@@ -1,14 +1,15 @@
 import React from "react";
 import s from "./UserBoard.module.css";
 
-const UserBoard = () => {
+const UserBoard = ({user}) => {
+    console.log(user);
     return (
         <section className={s.user}>
-            <img src="https://yt3.ggpht.com/a/AATXAJyAFVGj7st1D6jw10hT48NR8r_WhfVJqDNM0vPbeA=s900-c-k-c0xffffffff-no-rj-mo"
+            <img src={user.photos.large || "https://yt3.ggpht.com/a/AATXAJyAFVGj7st1D6jw10hT48NR8r_WhfVJqDNM0vPbeA=s900-c-k-c0xffffffff-no-rj-mo"}
                  alt="user avatar"
                  className={s.avatar}
             />
-            <h2 className={s.name}>Kirill Borovskikh</h2>
+            <h2 className={s.name}>{user.fullName}</h2>
             <address className={s.about}>
                 <table>
                     <caption className="visually-hidden">Personal information</caption>
@@ -23,7 +24,7 @@ const UserBoard = () => {
                         </tr>
                         <tr>
                             <th>Education:</th>
-                            <td>UNIVERSITY</td>
+                            <td>{user.aboutMe}</td>
                         </tr>
                         <tr>
                             <th>Web Site:</th>

@@ -6,6 +6,8 @@ const actionTypes = {
     SWITCH_FOLLOW: "SWITCH-FOLLOW",
     SET_USERS: "SET-USERS",
     REMOVE_USERS: "REMOVE-USERS",
+    SET_USER: "SET-USER",
+    REMOVE_USER: "REMOVE-USER",
 };
 
 export default actionTypes;

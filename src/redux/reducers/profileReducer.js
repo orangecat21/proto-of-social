@@ -16,6 +16,7 @@ const initialState = {
         },
     ],
     newPostText: '',
+    user: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -40,6 +41,18 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: action.newText,
             };
 
+        case actionTypes.SET_USER :
+            return {
+                ...state,
+                user: action.user,
+            }
+
+        case actionTypes.REMOVE_USER :
+            return {
+                ...state,
+                user: null,
+            }
+
         default:
             return state;
     }
@@ -51,6 +64,15 @@ export const addPostActionCreator = () => ({
 export const updateNewPostTextActionCreator = (text) => ({
     type: actionTypes.UPDATE_NEW_POST_TEXT,
     newText: text,
+});
+
+export const setUser = (user) => ({
+    type: actionTypes.SET_USER,
+    user
+});
+
+export  const removeUser = () => ({
+    type: actionTypes.REMOVE_USER,
 });
 
 export default profileReducer;

@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./User.module.css";
 import userPhoto from '../../../assets/img/user.jpg';
+import {NavLink} from "react-router-dom";
 
 
 const User = ({userData, onSwitchFollow}) => {
@@ -11,10 +12,12 @@ const User = ({userData, onSwitchFollow}) => {
 
     return (
         <li className={s.wrapper}>
-            <img src={userData.photos.small || userPhoto}
-                 alt="User avatar"
-                 className={s.userAvatar}
-            />
+            <NavLink to={`/profile/${userData.id}`} className={s.userAvatar}>
+                <img src={userData.photos.small || userPhoto}
+                     alt="User avatar"
+                     className={s.userAvatar}
+                />
+            </NavLink>
 
             <button className={s.followButton}
                     onClick={clickHandler}
