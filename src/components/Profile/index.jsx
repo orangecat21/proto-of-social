@@ -6,7 +6,7 @@ import UserBoard from "../UserBoard";
 import Wall from './Wall';
 import {ReactComponent as Loader} from "../../assets/svg/loader.svg";
 
-const Profile = ({userId=2, user, setUser, removeUser}) => {
+const Profile = ({userId=13048, user, setUser, removeUser}) => {
 
     useEffect(() => {
         let didCancel = false;

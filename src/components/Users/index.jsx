@@ -11,7 +11,9 @@ const Users = ({usersList, onSwitchFollow, setUsers, removeUsers}) => {
     const [countOfUsers] = useState(9);
 
     useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}&page=1`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}&page=1`, {
+            withCredentials: true,
+        })
             .then(res => {
                 setUsers(res.data.items);
                 let newMaxPage = Math.ceil(res.data.totalCount / countOfUsers);
@@ -26,7 +28,9 @@ const Users = ({usersList, onSwitchFollow, setUsers, removeUsers}) => {
         let pageNumber = usersList.length / countOfUsers + 1;
         if (pageNumber <= maxPage) {
             setIsLoading(true);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}&page=${pageNumber}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${countOfUsers}&page=${pageNumber}`, {
+                withCredentials: true,
+            })
                 .then(res => {
                     setUsers(res.data.items);
                     setIsLoading(false);
