@@ -7,7 +7,6 @@ import Wall from './Wall';
 import {ReactComponent as Loader} from "../../assets/svg/loader.svg";
 
 const Profile = ({userId=13048, user, setUser, removeUser}) => {
-
     useEffect(() => {
         let didCancel = false;
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)

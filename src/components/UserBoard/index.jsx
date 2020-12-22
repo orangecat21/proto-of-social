@@ -2,7 +2,6 @@ import React from "react";
 import s from "./UserBoard.module.css";
 
 const UserBoard = ({user}) => {
-    console.log(user);
     return (
         <section className={s.user}>
             <img src={user.photos.large || "https://yt3.ggpht.com/a/AATXAJyAFVGj7st1D6jw10hT48NR8r_WhfVJqDNM0vPbeA=s900-c-k-c0xffffffff-no-rj-mo"}
