@@ -43,7 +43,7 @@ const User = ({userData, onSwitchFollow}) => {
     return (
         <li className={s.wrapper}>
             <NavLink to={`/profile/${userData.id}`} className={s.userAvatar}>
-                <img src={userData.photos.small || userPhoto}
+                <img src={userData.photos?.small || userPhoto}
                      alt="User avatar"
                      className={s.userAvatar}
                 />

@@ -2,7 +2,6 @@ import actionTypes from "../actionTypes";
 
 const initialState = {
     users: [],
-
 };
 
 const userReducer = (state = initialState, action) => {
